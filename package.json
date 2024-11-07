@@ -1,4 +1,10 @@
 {
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -R build && tsc",
+    "dev": "npm run build && node build/index.js",
+    "prepare": "npm run clean && git add ."
+  },
   "dependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
