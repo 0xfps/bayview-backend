@@ -25,6 +25,7 @@ function getTokenCommentsController(req, res) {
                 }
             };
             res.send(response);
+            return;
         }
         const tokensComment = yield comments_1.default.find({ tokenAddress }).skip(offset).limit(size);
         const response = {

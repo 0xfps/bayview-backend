@@ -9,6 +9,7 @@ import getTokenCommentsRouter from "./routes/get/get-token-comments-route"
 import getTokenCommentsCountRouter from "./routes/get/get-token-comments-count-route"
 import getAllTokensRouter from "./routes/get/get-all-tokens-route"
 import getUsersTokensRouter from "./routes/get/get-users-tokens-route"
+import addCommentRouter from "./routes/post/add-comment-route"
 
 dotenv.config()
 const PORT = process.env.PORT ?? 8000
@@ -29,7 +30,7 @@ app.use("/get-all-tokens", getAllTokensRouter)
 app.use("/get-users-tokens", getUsersTokensRouter)
 
 // POST Routes.
-// ---
+app.use("/add-comment", addCommentRouter)
 
 app.get("/", function (req, res) {
     res.send({

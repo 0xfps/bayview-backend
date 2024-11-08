@@ -15,6 +15,7 @@ export default async function getTokenCommentsCountController(req: Request, res:
         }
 
         res.send(response)
+        return
     }
 
     const tokensComment = await commentsModel.find({ tokenAddress })
