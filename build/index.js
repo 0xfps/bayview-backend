@@ -12,6 +12,8 @@ const get_user_route_1 = __importDefault(require("./routes/get/get-user-route"))
 const get_token_route_1 = __importDefault(require("./routes/get/get-token-route"));
 const get_token_comments_route_1 = __importDefault(require("./routes/get/get-token-comments-route"));
 const get_token_comments_count_route_1 = __importDefault(require("./routes/get/get-token-comments-count-route"));
+const get_all_tokens_route_1 = __importDefault(require("./routes/get/get-all-tokens-route"));
+const get_users_tokens_route_1 = __importDefault(require("./routes/get/get-users-tokens-route"));
 dotenv_1.default.config();
 const PORT = (_a = process.env.PORT) !== null && _a !== void 0 ? _a : 8000;
 const app = (0, express_1.default)();
@@ -24,6 +26,8 @@ app.use("/get-user", get_user_route_1.default);
 app.use("/get-token", get_token_route_1.default);
 app.use("/get-token-comments", get_token_comments_route_1.default);
 app.use("/get-token-comments-count", get_token_comments_count_route_1.default);
+app.use("/get-all-tokens", get_all_tokens_route_1.default);
+app.use("/get-users-tokens", get_users_tokens_route_1.default);
 // POST Routes.
 // ---
 app.get("/", function (req, res) {

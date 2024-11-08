@@ -7,7 +7,8 @@ const tokenSchema = new Schema({
     image: SchemaTypes.String, // URL to Cloudinary, I presume.
     chain: SchemaTypes.String,
     twitter: SchemaTypes.String,
-    telegram: SchemaTypes.String
+    telegram: SchemaTypes.String,
+    creator: SchemaTypes.String
 })
 
 const tokensModel = models.tokensModel || model("tokensModel", tokenSchema)
