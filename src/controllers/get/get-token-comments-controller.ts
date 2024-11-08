@@ -15,6 +15,7 @@ export default async function getTokenCommentsController(req: Request, res: Resp
         }
 
         res.send(response)
+        return
     }
 
     const tokensComment = await commentsModel.find({ tokenAddress }).skip(offset).limit(size)

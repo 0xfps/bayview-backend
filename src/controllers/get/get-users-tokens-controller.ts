@@ -13,6 +13,7 @@ export default async function getUsersTokensController(req: Request, res: Respon
         }
 
         res.send(response)
+        return
     }
 
     const usersTokens = await tokensModel.find({ creator: address }).skip(offset).limit(size)

@@ -12,26 +12,40 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const tokens_1 = __importDefault(require("../../db/schemas/tokens"));
-function getUsersTokensController(req, res) {
+const comments_1 = __importDefault(require("../../db/schemas/comments"));
+function addCommentController(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const { address, offset, size } = req.body;
+        const { address, tokenAddress, comment } = req.body;
         if (!address) {
             const response = {
                 status: 400,
-                msg: "Not found",
-                data: []
+                msg: "Invalid address"
             };
             res.send(response);
             return;
         }
-        const usersTokens = yield tokens_1.default.find({ creator: address }).skip(offset).limit(size);
+        const date = new Date().getTime();
+        const commentId = date * Math.floor(Math.random() * 1000);
+        const newComment = yield comments_1.default.create({
+            commentId,
+            tokenAddress,
+            address,
+            comment,
+            date
+        });
+        if (!newComment) {
+            const response = {
+                status: 403,
+                msg: "There was an error adding the comment."
+            };
+            res.send(response);
+            return;
+        }
         const response = {
             status: 200,
-            msg: "Tokens found.",
-            data: usersTokens || []
+            msg: "Comment added!"
         };
         res.send(response);
     });
 }
-exports.default = getUsersTokensController;
+exports.default = addCommentController;
