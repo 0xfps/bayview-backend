@@ -3,6 +3,7 @@ import cors from "cors"
 import dotenv from "dotenv"
 
 import "./db/index"
+import getUserRouter from "./routes/get/get-user-route"
 
 dotenv.config()
 const PORT = process.env.PORT ?? 8000
@@ -15,7 +16,7 @@ app.use(express.json())
 app.use(express.urlencoded())
 
 // GET Routes.
-// ---
+app.use("/get-user", getUserRouter)
 
 // POST Routes.
 // ---

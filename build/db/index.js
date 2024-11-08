@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-const DB_URL = process.env.LOCAL == "true" ? process.env.MONGO_DB_LOCAL : process.env.MONGO_DB_LIVE;
+const DB_URL = process.env.ENV == "local" ? process.env.MONGO_DB_LOCAL : process.env.MONGO_DB_LIVE;
 function connectToDatabase() {
     if (DB_URL) {
         mongoose_1.default.connect(DB_URL)
