@@ -3,7 +3,7 @@ import dotenv from "dotenv"
 
 dotenv.config()
 
-const DB_URL: string | undefined = process.env.LOCAL == "true" ? process.env.MONGO_DB_LOCAL : process.env.MONGO_DB_LIVE
+const DB_URL: string | undefined = process.env.ENV == "local" ? process.env.MONGO_DB_LOCAL : process.env.MONGO_DB_LIVE
 
 function connectToDatabase() {
     if (DB_URL) {
