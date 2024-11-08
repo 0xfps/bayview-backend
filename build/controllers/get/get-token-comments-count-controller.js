@@ -12,33 +12,29 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const tokens_1 = __importDefault(require("../../db/schemas/tokens"));
-function getTokenController(req, res) {
+const comments_1 = __importDefault(require("../../db/schemas/comments"));
+function getTokenCommentsCountController(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const { tokenAddress } = req.params;
+        const { tokenAddress } = req.body;
         if (!tokenAddress) {
             const response = {
                 status: 400,
-                msg: "Invalid token or chain."
+                msg: "Not found",
+                data: {
+                    count: 0
+                }
             };
             res.send(response);
-            return;
         }
-        const token = yield tokens_1.default.findOne({ tokenAddress });
-        if (!token) {
-            const response = {
-                status: 404,
-                msg: "Token not found."
-            };
-            res.send(response);
-            return;
-        }
+        const tokensComment = yield comments_1.default.find({ tokenAddress });
         const response = {
             status: 200,
-            msg: "Token found.",
-            data: token
+            msg: "Comments found.",
+            data: {
+                count: tokensComment ? tokensComment.length : 0
+            }
         };
         res.send(response);
     });
 }
-exports.default = getTokenController;
+exports.default = getTokenCommentsCountController;

@@ -8,14 +8,14 @@ export default async function getTokenController(req: Request, res: Response) {
     if (!tokenAddress) {
         const response: BayviewResponse = {
             status: 400,
-            msg: "Invalid token."
+            msg: "Invalid token or chain."
         }
 
         res.send(response)
         return
     }
 
-    const token = await tokensModel.findOne({ address: tokenAddress })
+    const token = await tokensModel.findOne({ tokenAddress })
 
     if (!token) {
         const response: BayviewResponse = {
