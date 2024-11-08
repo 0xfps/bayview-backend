@@ -4,6 +4,7 @@ import dotenv from "dotenv"
 
 import "./db/index"
 import getUserRouter from "./routes/get/get-user-route"
+import getTokenRouter from "./routes/get/get-token-route"
 
 dotenv.config()
 const PORT = process.env.PORT ?? 8000
@@ -17,6 +18,7 @@ app.use(express.urlencoded())
 
 // GET Routes.
 app.use("/get-user", getUserRouter)
+app.use("/get-token", getTokenRouter)
 
 // POST Routes.
 // ---

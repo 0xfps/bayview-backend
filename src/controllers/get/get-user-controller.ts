@@ -8,11 +8,11 @@ export default async function getUserController(req: Request, res: Response) {
     if (!address) {
         const response: BayviewResponse = {
             status: 400,
-            msg: "Invalid user.",
-            data: undefined
+            msg: "Invalid user."
         }
 
         res.send(response)
+        return
     }
 
     const user = await usersModel.findOne({ address })
@@ -34,8 +34,7 @@ export default async function getUserController(req: Request, res: Response) {
         } else {
             const response: BayviewResponse = {
                 status: 400,
-                msg: "Error creating user.",
-                data: undefined
+                msg: "Error creating user."
             }
 
             res.send(response)

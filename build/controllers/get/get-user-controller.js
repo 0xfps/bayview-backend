@@ -19,10 +19,10 @@ function getUserController(req, res) {
         if (!address) {
             const response = {
                 status: 400,
-                msg: "Invalid user.",
-                data: undefined
+                msg: "Invalid user."
             };
             res.send(response);
+            return;
         }
         const user = yield users_1.default.findOne({ address });
         if (!user) {
@@ -42,8 +42,7 @@ function getUserController(req, res) {
             else {
                 const response = {
                     status: 400,
-                    msg: "Error creating user.",
-                    data: undefined
+                    msg: "Error creating user."
                 };
                 res.send(response);
             }

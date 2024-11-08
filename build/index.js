@@ -9,6 +9,7 @@ const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
 require("./db/index");
 const get_user_route_1 = __importDefault(require("./routes/get/get-user-route"));
+const get_token_route_1 = __importDefault(require("./routes/get/get-token-route"));
 dotenv_1.default.config();
 const PORT = (_a = process.env.PORT) !== null && _a !== void 0 ? _a : 8000;
 const app = (0, express_1.default)();
@@ -18,6 +19,7 @@ app.use(express_1.default.json());
 app.use(express_1.default.urlencoded());
 // GET Routes.
 app.use("/get-user", get_user_route_1.default);
+app.use("/get-token", get_token_route_1.default);
 // POST Routes.
 // ---
 app.get("/", function (req, res) {
