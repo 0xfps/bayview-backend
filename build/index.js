@@ -16,6 +16,7 @@ const get_all_tokens_route_1 = __importDefault(require("./routes/get/get-all-tok
 const get_users_tokens_route_1 = __importDefault(require("./routes/get/get-users-tokens-route"));
 const add_comment_route_1 = __importDefault(require("./routes/post/add-comment-route"));
 const create_token_route_1 = __importDefault(require("./routes/post/create-token-route"));
+const find_token_route_1 = __importDefault(require("./routes/get/find-token-route"));
 dotenv_1.default.config();
 const PORT = (_a = process.env.PORT) !== null && _a !== void 0 ? _a : 8000;
 const app = (0, express_1.default)();
@@ -30,6 +31,7 @@ app.use("/get-token-comments", get_token_comments_route_1.default);
 app.use("/get-token-comments-count", get_token_comments_count_route_1.default);
 app.use("/get-all-tokens", get_all_tokens_route_1.default);
 app.use("/get-users-tokens", get_users_tokens_route_1.default);
+app.use("/search", find_token_route_1.default);
 // POST Routes.
 app.use("/add-comment", add_comment_route_1.default);
 app.use("/create-token", create_token_route_1.default);
@@ -37,7 +39,7 @@ app.get("/", function (req, res) {
     res.send({
         status: 200,
         msg: "OK",
-        data: ["Hola, amigo!"]
+        data: ["Hola, amigo!"],
     });
 });
 app.listen(PORT, function () {
